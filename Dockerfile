@@ -20,12 +20,12 @@ RUN echo 'deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe 
 RUN useradd -m -s /bin/bash baidu \
         && passwd baidu \
         && echo 'openbox & \n\
-        /opt/baidunetdisk/baidunetdisk'\
+        /opt/baidunetdisk/baidunetdisk --no-sandbox'\
         >/home/baidu/.xsession\
         && chown baidu /home/baidu/.xsession \
         && chgrp baidu /home/baidu/.xsession \
         && echo 'rm -rf /var/run/xrdp/* \n\
-        rm -rf /tmp/* \n\
+        rm -rf /tmp/.* \n\
         xrdp-sesman \n\
         xrdp -n'\
         > /init \
